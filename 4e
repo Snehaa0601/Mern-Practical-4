@@ -1,0 +1,33 @@
+App.jsx
+ import React, { useState } from 'react';
+
+
+function ItemList() {
+  // 1. Define your state array
+  const [items, setItems] = useState([
+    { id: 1, name: 'Apple', category: 'Fruit' },
+    { id: 2, name: 'Carrot', category: 'Vegetable' },
+    { id: 3, name: 'Milk', category: 'Dairy' }
+  ]);
+
+
+  return (
+    <div style={{ padding: '20px' }}>
+      <h2>My Items List</h2>
+
+
+      {/* 2. Map through state without list tags */}
+      <div className="item-container">
+        {items.map((item) => (
+          <div key={item.id} className="item-card">
+            <h3>{item.name}</h3>
+            <p>Category: {item.category}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
+export default ItemList;
