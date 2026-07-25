@@ -1,0 +1,16 @@
+App.jsx
+import { useState } from "react"
+function App() {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <h1>Button Click Counter</h1>
+      <hr />
+      <h2>User Clicks : {count} Times</h2>
+      <button onClick={() => setCount(count +1)}> Increased</button>
+       <button onClick={() => setCount(count -1)}> Decreased</button>
+        <button onClick={() => setCount(count 0)}> Reset</button>
+    </div>
+  );
+}
+export default App;
