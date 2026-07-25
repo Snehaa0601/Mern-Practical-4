@@ -1,0 +1,82 @@
+StudentForm.jsx 
+import { useState } from "react";
+
+
+function Form() {
+  const [name, setName] = useState("");
+  const [rollNo, setRollNo] = useState("");
+  const [branch, setBranch] = useState("");
+  const [cgpa, setCgpa] = useState("");
+
+
+  return (
+    <div>
+      <h1>Student Registration Form</h1>
+      <hr />
+
+
+      <label>Student Name : </label>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <br /><br />
+
+
+      <label>Roll No : </label>
+      <input
+        type="text"
+        value={rollNo}
+        onChange={(e) => setRollNo(e.target.value)}
+      />
+      <br /><br />
+
+
+      <label>Branch : </label>
+      <input
+        type="text"
+        value={branch}
+        onChange={(e) => setBranch(e.target.value)}
+      />
+      <br /><br />
+
+
+      <label>CGPA : </label>
+      <input
+        type="number"
+        step="0.01"
+        value={cgpa}
+        onChange={(e) => setCgpa(e.target.value)}
+      />
+      <br /><br />
+
+
+      <h2>Student Details</h2>
+      <hr />
+
+
+      <p><b>Student Name :</b> {name}</p>
+      <p><b>Roll No :</b> {rollNo}</p>
+      <p><b>Branch :</b> {branch}</p>
+      <p><b>CGPA :</b> {cgpa}</p>
+    </div>
+  );
+}
+
+
+export default Form;
+App.jsx
+import Form from "./components/StudentForm";
+
+
+function App() {
+  return (
+    <div>
+      <Form />
+    </div>
+  );
+}
+
+
+export default App;
