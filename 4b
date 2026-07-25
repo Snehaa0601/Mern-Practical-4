@@ -1,0 +1,95 @@
+App.jsx
+import Header from "./components/Header";
+import HotelCard from "./components/HotelCard";
+import Footer from "./components/Footer";
+
+
+function App() {
+  const hotels = [
+    {
+      restaurant: "Domino's Pizza",
+      item: "Farmhouse Pizza",
+      price: 499,
+      discount: 20,
+      rating: 4.5,
+    },
+    {
+      restaurant: "McDonald's",
+      item: "McAloo Tikki Meal",
+      price: 299,
+      discount: 15,
+      rating: 4.3,
+    },
+    {
+      restaurant: "Burger King",
+      item: "Veg Whopper Combo",
+      price: 399,
+      discount: 10,
+      rating: 4.4,
+    },
+  ];
+
+
+  return (
+    <>
+      <Header />
+
+
+      {hotels.map((hotel, index) => (
+        <HotelCard
+          key={index}
+          restaurant={hotel.restaurant}
+          item={hotel.item}
+          price={hotel.price}
+          discount={hotel.discount}
+          rating={hotel.rating}
+        />
+      ))}
+
+
+      <Footer />
+    </>
+  );
+}
+
+
+export default App;
+
+HotelCard.jsx
+function HotelCard(props){
+    const discount = (props.price * props.discount) / 100;
+    const finalprice = props.price - discount;
+
+
+    return(
+        <div>
+            <h2>{props.restaurant}</h2>
+            <p>Food Item: {props.food}</p>
+            <p>Original Price: {props.price}</p>
+            <p>Discount: {props.discount}%</p>
+            <p>Discount Amount: {discount}</p>
+            <p>Final Price: {finalprice}</p>
+            <p>Rating: {props.rating}</p>
+        </div>
+    );
+}
+export default HotelCard;
+Header.jsx
+function Header() {
+    return(
+        <div>
+            <h1>Online food Delivery Dashboard</h1>
+        </div>
+    );
+}
+export default Header;
+Fotter.jsx
+function Footer() {
+  return (
+    <div>
+      <hr />
+      <p> Thank You For Visiting </p>
+    </div>
+  );
+}
+export default Footer;
