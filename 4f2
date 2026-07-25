@@ -1,0 +1,51 @@
+App.jsx
+import React, { useState } from 'react';
+
+
+export default function ShortTodo() {
+  const [todos, setTodos] = useState([]);
+  const [text, setText] = useState('');
+
+
+  const addTodo = (e) => {
+    e.preventDefault();
+    if (!text.trim()) return;
+    setTodos([...todos, { id: Date.now(), text, done: false }]);
+    setText('');
+  };
+
+
+  const toggleTodo = (id) =>
+    setTodos(todos.map((t) => (t.id === id ? { ...t, done: !t.done } : t)));
+
+
+  const deleteTodo = (id) => setTodos(todos.filter((t) => t.id !== id));
+
+
+  return (
+    <div style={{ maxWidth: 300, margin: '20px auto', fontFamily: 'sans-serif' }}>
+      <h3>To-Do List</h3>
+      <form onSubmit={addTodo} style={{ display: 'flex', gap: 5 }}>
+        <input value={text} onChange={(e) => setText(e.target.value)} placeholder="Add task..." />
+        <button type="submit">Add</button>
+      </form>
+
+
+      <div style={{ marginTop: 15 }}>
+        {todos.map((todo) => (
+          <div key={todo.id} style={{ display: 'flex', justifyContent: 'space-between', margin: '5px 0' }}>
+            <span
+              onClick={() => toggleTodo(todo.id)}
+              style={{ textDecoration: todo.done ? 'line-through' : 'none', cursor: 'pointer' }}
+            >
+              {todo.text}
+            </span>
+            <button onClick={() => deleteTodo(todo.id)}>✕</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
